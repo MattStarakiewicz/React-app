@@ -1,3 +1,24 @@
+
+/*
+var moviesElements = movies.map(function(movie) {
+    return React.createElement('li', {key: movie.id},
+        React.createElement('h2', {}, movie.title),
+        React.createElement('p', {}, movie.desc),
+        React.createElement('img', {src: movie.img})
+    );
+});
+
+var element = 
+    React.createElement('div', {},
+        React.createElement('h1', {}, 'lista filmów'),
+        React.createElement('ul', {}, moviesElements)
+);
+
+ReactDOM.render(element, document.getElementById('app'));
+*/
+
+// OD NOWA
+
 var movies = [
     {
         id: 1,
@@ -31,18 +52,28 @@ var movies = [
     }
 ];
 
-var moviesElements = movies.map(function(movie) {
-    return React.createElement('li', {key: movie.id},
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc),
-        React.createElement('img', {src: movie.img})
-    );
-});
+var Movie = React.createClass({
+    propTypes: {
+        movies: React.PropTypes.table.isRequired,
+      },
 
+    render: function() {
+            return React.createElement('li', {key: this.props.movies.id},
+                React.createElement('h2', {}, this.props.movies.title),
+                React.createElement('p', {}, this.props.movies.desc),
+                React.createElement('img', {src: this.props.movies.img})
+            );
+    },
+}); 
+
+/*
 var element = 
     React.createElement('div', {},
         React.createElement('h1', {}, 'lista filmów'),
-        React.createElement('ul', {}, moviesElements)
+        React.createElement('ul', {}, movie)
 );
+*/
 
+
+var element = React.createElement(Movie, {key: movies.id, title: movies, desc: movies, src: movies.img});
 ReactDOM.render(element, document.getElementById('app'));
