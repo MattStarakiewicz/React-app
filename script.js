@@ -1,24 +1,3 @@
-
-/*
-var moviesElements = movies.map(function(movie) {
-    return React.createElement('li', {key: movie.id},
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc),
-        React.createElement('img', {src: movie.img})
-    );
-});
-
-var element = 
-    React.createElement('div', {},
-        React.createElement('h1', {}, 'lista filmów'),
-        React.createElement('ul', {}, moviesElements)
-);
-
-ReactDOM.render(element, document.getElementById('app'));
-*/
-
-// OD NOWA
-
 var movies = [
     {
         id: 1,
@@ -53,27 +32,26 @@ var movies = [
 ];
 
 var Movie = React.createClass({
+
     propTypes: {
-        movies: React.PropTypes.table.isRequired,
-      },
+        movie: React.PropTypes.object.isRequired,
+    },
 
     render: function() {
-            return React.createElement('li', {key: this.props.movies.id},
-                React.createElement('h2', {}, this.props.movies.title),
-                React.createElement('p', {}, this.props.movies.desc),
-                React.createElement('img', {src: this.props.movies.img})
+            return React.createElement('li', {key: this.props.movie.id},
+                React.createElement('h2', {}, this.props.movie.title),
+                React.createElement('p', {}, this.props.movie.desc),
+                React.createElement('img', {src: this.props.movie.img})
             );
     },
 }); 
 
-/*
+var moviesList = movies.map(function(dupa) {
+    return React.createElement(Movie, {movie: dupa, key: dupa.id});
+});
+
 var element = 
     React.createElement('div', {},
         React.createElement('h1', {}, 'lista filmów'),
-        React.createElement('ul', {}, movie)
+        React.createElement('ul', {}, moviesList)
 );
-*/
-
-
-var element = React.createElement(Movie, {key: movies.id, title: movies, desc: movies, src: movies.img});
-ReactDOM.render(element, document.getElementById('app'));
