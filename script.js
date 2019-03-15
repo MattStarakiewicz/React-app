@@ -46,8 +46,8 @@ var Movie = React.createClass({
     },
 }); 
 
-var moviesList = movies.map(function(dupa) {
-    return React.createElement(Movie, {movie: dupa, key: dupa.id});
+var moviesList = movies.map(function(list) {
+    return React.createElement(Movie, {movie: list, key: list.id});
 });
 
 var element = 
